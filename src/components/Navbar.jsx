@@ -1,14 +1,10 @@
 import React from 'react';
 import { AppBar, Container, Box, Button } from '@mui/material';
 import { motion } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const location = useLocation();
 
   return (
     <AppBar
@@ -32,15 +28,16 @@ const Navbar = () => {
           <motion.div
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            onClick={() => scrollToSection('accueil')}
             style={{ cursor: 'pointer' }}
           >
-            <Box
-              component="img"
-              src="/logo.svg"
-              alt="Logo"
-              sx={{ width: 40, height: 40 }}
-            />
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <Box
+                component="img"
+                src="/logo.svg"
+                alt="Logo"
+                sx={{ height: 40 }}
+              />
+            </Link>
           </motion.div>
 
           {/* Navigation */}
@@ -52,19 +49,19 @@ const Navbar = () => {
             }}
           >
             {[
-              { id: 'work', label: 'Work' },
-              { id: 'skills', label: 'Skills' },
-              { id: 'contact', label: 'Contact' }
+              { path: '/', label: 'Accueil' },
+              { path: '/contact', label: 'Contact' }
             ].map((item) => (
               <motion.div
-                key={item.id}
+                key={item.path}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Button
-                  onClick={() => scrollToSection(item.id)}
+                  component={Link}
+                  to={item.path}
                   sx={{
-                    color: 'text.secondary',
+                    color: location.pathname === item.path ? 'primary.main' : 'text.secondary',
                     fontSize: '0.9rem',
                     textTransform: 'none',
                     '&:hover': {

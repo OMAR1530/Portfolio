@@ -6,11 +6,13 @@ export const aboutSection = {
   bgcolor: 'background.paper',
   borderRadius: "20px",
   margin: '2rem 0',
+  paddingLeft: '5%',
 };
 
 export const container = {
   width: '90%',
-  maxWidth: '1200px'
+  maxWidth: '1200px',
+  marginLeft: '5%',
 };
 
 export const contentWrapper = {
@@ -25,18 +27,18 @@ export const contentWrapper = {
 
 export const profileImageWrapper = {
   flexShrink: 0,
-  width: '300px',
-  height: '300px',
+  width: '400px',
+  height: '500px',
   '@media (max-width: 900px)': {
-    width: '250px',
-    height: '250px',
+    width: '300px',
+    height: '400px',
   }
 };
 
 export const profileImage = {
   width: '100%',
   height: '100%',
-  borderRadius: '50%',
+  borderRadius: '20px',
   objectFit: 'cover',
   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
   transition: 'transform 0.3s ease-in-out',
